@@ -284,18 +284,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453935695}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 236791225}
-  m_Father: {fileID: 1827516841}
-  m_RootOrder: 1
+  m_Father: {fileID: 1771994257}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78.7, y: 261.09}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 160, y: 52.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453935697
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -747,7 +747,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RemoveGrid
+  m_text: 'Flip Item
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -837,7 +839,7 @@ GameObject:
   - component: {fileID: 1755140241}
   - component: {fileID: 1755140240}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Flip Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,18 +852,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755140238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1674332389}
-  m_Father: {fileID: 1827516841}
-  m_RootOrder: 2
+  m_Father: {fileID: 1771994257}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 106.7, y: 261.09}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 160, y: 52.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1755140240
@@ -910,7 +912,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2000882506}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: RemoveParent
+        m_MethodName: FlipItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -958,6 +960,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755140238}
   m_CullTransparentMesh: 1
+--- !u!1 &1771994256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771994257}
+  m_Layer: 5
+  m_Name: DebugButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1771994257
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771994256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 453935696}
+  - {fileID: 1755140239}
+  m_Father: {fileID: 1827516841}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1827516840
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,8 +1029,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2012028557}
-  - {fileID: 453935696}
-  - {fileID: 1755140239}
+  - {fileID: 1771994257}
   m_Father: {fileID: 713099575}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1070,6 +1109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generator: {fileID: 2000882509}
   ItemHolder: {fileID: 2012028557}
+  _items: []
 --- !u!4 &2000882507
 Transform:
   m_ObjectHideFlags: 0
@@ -1143,6 +1183,7 @@ GameObject:
   - component: {fileID: 2012028560}
   - component: {fileID: 2012028559}
   - component: {fileID: 2012028558}
+  - component: {fileID: 2012028561}
   m_Layer: 5
   m_Name: Items Parent
   m_TagString: Untagged
@@ -1232,6 +1273,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012028556}
   m_CullTransparentMesh: 1
+--- !u!225 &2012028561
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012028556}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &8183769007650436472
 PrefabInstance:
   m_ObjectHideFlags: 0

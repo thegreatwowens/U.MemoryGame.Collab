@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 2457877374528406160}
   - component: {fileID: 7038337685843907626}
   - component: {fileID: 2855011164830330242}
-  - component: {fileID: 3285551762425577733}
   m_Layer: 5
   m_Name: Bread
   m_TagString: Untagged
@@ -146,7 +145,8 @@ MonoBehaviour:
   inType: 30
   item: {fileID: 11400000, guid: a308e3a2e963fb242ab351406de53018, type: 2}
   itemImage: {fileID: 5290971338327536581}
-  Blocker: {fileID: 916827735883970006}
+  BackImage: {fileID: 916827735883970006}
+  activeBack: 0
 --- !u!114 &7038337685843907626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +221,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3285551762425577733}
-        m_TargetAssemblyTypeName: InputListener, Assembly-CSharp
+      - m_Target: {fileID: 2457877374528406160}
+        m_TargetAssemblyTypeName: ItemData, Assembly-CSharp
         m_MethodName: ThrowRequest
         m_Mode: 1
         m_Arguments:
@@ -233,19 +233,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3285551762425577733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4066387467068784668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1ee7e38ef0fd474f9b3a506ca23ff52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 2457877374528406160}
 --- !u!1 &4718889362369365473
 GameObject:
   m_ObjectHideFlags: 0
