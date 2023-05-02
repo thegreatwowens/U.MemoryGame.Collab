@@ -1,132 +1,81 @@
-using System.Collections.Generic;
 using UnityEngine;
+using ddr.MemoryGame;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField]
-    AnimationController animationController;
     public static GameController Instance;
-    [SerializeField]
-    GameObject itemPrefab;
-    [Space]
-    [SerializeField]
-    List<GameObject> itemDataList = new List<GameObject>();
-    [Space]
-    [SerializeField]
-    List<GameObject> GridItems = new List<GameObject>();
-
-
-    List<int> randomInts = new List<int>();
-    public GameObject gridItemsPanel;
-    public GridLayoutGroup layout;
-
-    private static bool _firstGuess, _secondGuess;
-
-    private string _firstGuessHolder, _secondGuessHolder;
-
-    GameObject firstGuess = null;
-    GameObject secondGuess = null;
 
     void Awake()
     {
-        if (Instance == null)
-        {
+        if(Instance == null){
             Instance = this;
         }
-        
-
     }
-    void Start()
-    {
-        //PopulateGrid();
-        layout = gridItemsPanel.GetComponent<GridLayoutGroup>();
+    [SerializeField]
+    ItemGenerator generator;
+    [Header("Items Parent")]
+    public Transform ItemHolder;
+    private List<GameObject> _items = new List<GameObject>();
 
+    private bool _firstGuess,_secondGuess;
+    private ItemData firstItemGuess,secondItemGuess;
 
+    public void Generate(){
+                    generator.PopulateGrid(ItemHolder,_items);
+                    LeanTween.delayedCall(1f,RemoveParent);
     }
-    public void deletelayOut()
-    {
-        //Destroy(layout);
-        PopulateGrid();
-    }
-    private void PopulateGrid()
-    {
-
-        for (int i = 0; i < itemDataList.Count; i++)
-        {
-            randomInts.Add(i);
-        }
-
-        randomInts.Shuffle();
-
-        for (int i = 0; i < itemDataList.Count; i++)
-        {
-
-            GridItems.Add(itemDataList[randomInts[i]]);
-
-
-        }
-        foreach (GameObject item in GridItems)
-        {
-
-            Instantiate(item, gridItemsPanel.transform);
-        }
+    public void RemoveParent(){
+            GridLayoutGroup layout = ItemHolder.GetComponent<GridLayoutGroup>();
+                Destroy(layout);
     }
 
-    public void TryGuess(string value, GameObject gameObject)
-    {
- 
-        ItemData item = gameObject.GetComponent<ItemData>();
-        if (!_firstGuess)
-        {
-            firstGuess = gameObject;
-            _firstGuess = true;
-            _firstGuessHolder = value;
-            Debug.Log(value);
+    public void TryMatch(GameObject listener){
+            
+            if(!_firstGuess){
+                firstItemGuess = listener.gameObject.GetComponent<ItemData>();
+                    _firstGuess = true;
+                    if(listener != null){
+                         print("This is First Guess: "+ firstItemGuess.item.name);
+                            firstItemGuess.Interacted();
+                    }
+                   
 
-        }
-        else if (!_secondGuess)
-        {
-            secondGuess = gameObject;
-            _secondGuess = true;
-            _secondGuessHolder = value;
-            Debug.Log(value);
-            if (_firstGuessHolder == _secondGuessHolder)
-            {
-                print(_firstGuessHolder + " == " + _secondGuessHolder);
-                _firstGuess = false;
-                _secondGuess = false;
-                Correct();
+            
+            }else if(!_secondGuess){
+                secondItemGuess = listener.gameObject.GetComponent<ItemData>();
+                _secondGuess = true;
+                if(listener !=null){
+                        print("This is Second Guess: "+ secondItemGuess.item.name);
+                        secondItemGuess.Interacted();
+                        ResetGuesses();
+                        MatchResult();
+
+                }
+            
             }
             
+    }
+    public void ResetGuesses(){
+            _firstGuess = false;_secondGuess = false;
+    } 
+    private void MatchResult(){
+        if(firstItemGuess.item == secondItemGuess.item){
+                Destroy(firstItemGuess.gameObject);
+                Destroy(secondItemGuess.gameObject);
+        }else{
+            firstItemGuess.NotMatched();
+            secondItemGuess.NotMatched();
         }
 
-
+    }
+    private void OnTryMatch(GameObject obj){
+        // AnimationController.Instance.ItemMatchAnimation(obj,new Vector3(2f,2f,2f).);
 
     }
-
-    public void Wrong(){
-        ItemData item1 = firstGuess.GetComponent<ItemData>();
-        ItemData item2 = secondGuess.GetComponent<ItemData>();
-            item1.EnableClosed();
-            item2.EnableClosed();
-
-    }
-    public void Correct()
+    void Update()
     {
-        Destroy(firstGuess);
-        Destroy(secondGuess);
-            if(_firstGuessHolder != _secondGuessHolder){
-                        
-            }
-
+        
     }
-    public void Animate()
-    {
-        Destroy(layout);
-    }
-
-
-
-
 }

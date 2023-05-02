@@ -139,10 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428b35fb0c203c2439d555ca4661eec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inType: 24
-  outType: 18
+  startingColor: {r: 1, g: 1, b: 1, a: 0}
+  endingColor: {r: 1, g: 0.8784314, b: 0, a: 1}
+  colorReset: {r: 1, g: 1, b: 1, a: 1}
+  borderImage: {fileID: 7038337685843907626}
+  inType: 30
   item: {fileID: 11400000, guid: 6de61751c362c8d4aa55ae63622612c4, type: 2}
-  image: {fileID: 5290971338327536581}
+  itemImage: {fileID: 5290971338327536581}
   Blocker: {fileID: 2709634809285967568}
 --- !u!114 &7038337685843907626
 MonoBehaviour:
@@ -242,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ee7e38ef0fd474f9b3a506ca23ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 2457877374528406160}
 --- !u!1 &4718889362369365473
 GameObject:
   m_ObjectHideFlags: 0
