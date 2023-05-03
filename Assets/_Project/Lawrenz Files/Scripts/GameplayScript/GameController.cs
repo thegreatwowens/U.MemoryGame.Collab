@@ -2,32 +2,27 @@ using UnityEngine;
 using ddr.MemoryGame;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instance;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
     [SerializeField]
     ItemGenerator generator;
     [Header("Items Parent")]
+    [HideInInspector]
     public Transform ItemHolder;
+    [HideInInspector]
     public List<GameObject> _items = new List<GameObject>();
 
     private bool _firstGuess, _secondGuess;
-    private ItemData firstItemGuess, secondItemGuess;
 
-    void Update()
-    {
-        
-    }
+    [HideInInspector]
+    public ItemData firstItemGuess, secondItemGuess;
 
+    private  int flipCount;
+    private int itemCounts;
     public void Generate()
     {
         generator.PopulateGrid(ItemHolder, _items);
@@ -79,6 +74,7 @@ public class GameController : MonoBehaviour
     {
         _firstGuess = false; 
         _secondGuess = false;
+        
     }
 
     private void Flipped()
@@ -89,45 +85,44 @@ public class GameController : MonoBehaviour
     {
         if (firstItemGuess.item == secondItemGuess.item)
         {
-            Matched();
-            // sounds
+            GameManager.main.animationController.MatchedAnimation();
         }
         else
         {
+            flipCount++;
             NotMatched();
+            GameManager.main.scoreManager.SetNewFlipRecord(flipCount);
             //sounds
         }
 
     }
-  
+    private void CheckCompletedGame(){
+        if(ItemHolder.childCount == 0){
+              StartCoroutine(GameCompleted());  
+                return;
+        }
+        else{
+            return;
+        }
+    }
     private void NotMatched()
     {
         firstItemGuess.NotMatched();
         secondItemGuess.NotMatched();
         ResetGuesses();
     }
-    private void Matched()
-    {
-        LeanTween.scale(firstItemGuess.gameObject,new Vector3(1.5f,1.5f,1.5f),.5f).setDelay(.2f).setEase(LeanTweenType.easeInOutCubic);
-         LeanTween.scale(secondItemGuess.gameObject,new Vector3(1.5f,1.5f,1.5f),.5f).setDelay(.2f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(FinalMatchedAnimation);  
-    }
-    
-    private void FinalMatchedAnimation(){
-        LeanTween.rotate(firstItemGuess.gameObject,new Vector3(0,0,360),.7f);
-        LeanTween.rotate(secondItemGuess.gameObject,new Vector3(0,0,-360),.7f);
-        LeanTween.scale(firstItemGuess.gameObject,new Vector3(0,0,0),1f).setDelay(.2f).setEase(LeanTweenType.easeInOutCubic);
-         LeanTween.scale(secondItemGuess.gameObject,new Vector3(0,0,0),1f).setDelay(.2f).setEase(LeanTweenType.easeInOutCubic).setOnComplete
-         (AfterMatched);
-
-
-
-    }
-    
-    private void AfterMatched(){
-        
-        _items.Remove(_items.Find(firstItemGuess.gameObject.name.Equals));
+    public void AfterMatched(){
         Destroy(firstItemGuess.gameObject);
         Destroy(secondItemGuess.gameObject);
+        LeanTween.delayedCall(.5f,CheckCompletedGame);
+
         ResetGuesses();
     }
+    IEnumerator GameCompleted(){
+        GameManager.main.uIManager.InstantiateObjectGameOverPanel();
+        yield return new WaitForSeconds(.001f);
+        GameManager.main.uIManager.ShowGameOverPanel();
+
+    }
+  
 }

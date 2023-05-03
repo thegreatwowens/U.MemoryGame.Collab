@@ -40,14 +40,14 @@ public class ItemData : MonoBehaviour
     }
     void OnEnable()
     {
-        AnimationController.Instance.OnItemDespawn(this.gameObject, inType);
+        GameManager.main.animationController.OnItemDespawn(this.gameObject, inType);
         btn = GetComponent<Button>();
     }
     public void Interacted()
     {
         interacted = true;
         CallFlip();
-        gameObject.transform.SetSiblingIndex(GameController.Instance._items.Count);
+        gameObject.transform.SetSiblingIndex(GameManager.main.gameController._items.Count);
     }
     public void NotMatched()
     {
@@ -60,14 +60,14 @@ public class ItemData : MonoBehaviour
     {
         if (interacted)
         {
-            AnimationController.Instance.ItemClicked(borderImage, startingColor, endingColor, 1f);
+            GameManager.main.animationController.ItemClicked(borderImage, startingColor, endingColor, 1f);
             btn.interactable = false;
         }
     }
     public void ThrowRequest()
     {
         string name = gameObject.name;
-        GameController.Instance.TryMatch(this.gameObject);
+       GameManager.main.gameController.TryMatch(this.gameObject);
 
     }
 

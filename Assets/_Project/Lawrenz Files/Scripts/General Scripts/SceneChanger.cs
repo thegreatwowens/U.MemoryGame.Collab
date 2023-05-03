@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ddr.MemoryGame;
 
 public class SceneChanger : MonoBehaviour
 {
@@ -13,18 +14,10 @@ public class SceneChanger : MonoBehaviour
     public float fadeOutDuration;
 
     private int indexScene;
-    public static SceneChanger instance;
 
-    Scene currentScene;
+    public Scene currentScene;
     void Awake()
     {
-        if(instance !=null && instance != this){
-            Destroy(this.gameObject);
-            return;
-             
-        }
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
     }
            
@@ -33,6 +26,7 @@ public class SceneChanger : MonoBehaviour
             currentScene = SceneManager.GetActiveScene();
                     if(currentScene.buildIndex == 1){
                     //    SoundManager.Instance.PlayMusic("MainMenuMusic",true);
+                        GameManager.main.gameController.ItemHolder = GameObject.FindWithTag("ItemsParent").transform;
                     }
                     if(currentScene.buildIndex == 2|| currentScene.buildIndex == 3){
                        //  SoundManager.Instance.PlayMusic("PVAIMusic",true);
@@ -40,6 +34,7 @@ public class SceneChanger : MonoBehaviour
                     
                     FadeFromPreviousScene();
         }
+    
     public void FadeToNextScene(int Index){
 
                 indexScene = Index;
