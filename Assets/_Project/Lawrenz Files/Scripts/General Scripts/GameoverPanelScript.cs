@@ -42,4 +42,5 @@ public class GameoverPanelScript : MonoBehaviour
     public void InstantiateObject(GameObject obj){
               Instantiate(obj,GameObject.FindWithTag("Canvas").transform);
     }
+    
 }
