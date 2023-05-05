@@ -12,15 +12,19 @@ public class GameoverPanelScript : MonoBehaviour
     private void OnEnable() {
             
             flipCount.text = "Flip Count: "+ GameManager.main.playerData.LoadPlayerData();
-            ShowGameOverPanel();
+            LeanTween.delayedCall(.2f,ShowGameOverPanel);
     }
     public void PlayAgain()
     {
-             GameManager.main.sceneChanger.FadeToNextScene(1);
+             GameManager.main.UpdateGameState(GameState.Generate);
     }
     public void ExitGame()
     { 
-        GameManager.main.sceneChanger.FadeToNextScene(0);
+        GameManager.main.UpdateGameState(GameState.MainMenu);
+    }
+    public void ClickedExitGame(){
+
+        HideGameOverPanel();
     }
      public void ShowGameOverPanel(){
           LeanTween.scale(this.gameObject,new Vector3(1,1,1),1f).setDelay(.1f).setEase(GameManager.main.uIManager.inType);
@@ -32,6 +36,7 @@ public class GameoverPanelScript : MonoBehaviour
     IEnumerator HidePanel(GameObject obj){
           LeanTween.scale(obj,new Vector3(0,0,0),1f).setDelay(.1f).setEase(GameManager.main.uIManager.outType);
         yield return new WaitForSeconds(1.1f);
+        ExitGame();
         DeleteObject(obj);
     }
     public void DeleteObject(GameObject obj){

@@ -23,6 +23,10 @@ public class GameController : MonoBehaviour
 
     private  int flipCount;
     private int itemCounts;
+    void Awake()
+    {
+       
+    }
     public void Generate()
     {
         generator.PopulateGrid(ItemHolder, _items);
@@ -96,14 +100,12 @@ public class GameController : MonoBehaviour
         }
 
     }
+    
     private void CheckCompletedGame(){
         if(ItemHolder.childCount == 0){
-              StartCoroutine(GameCompleted());  
-                return;
+             GameManager.main.UpdateGameState(GameState.GameOver);
         }
-        else{
-            return;
-        }
+        return;
     }
     private void NotMatched()
     {
@@ -115,14 +117,7 @@ public class GameController : MonoBehaviour
         Destroy(firstItemGuess.gameObject);
         Destroy(secondItemGuess.gameObject);
         LeanTween.delayedCall(.5f,CheckCompletedGame);
-
         ResetGuesses();
-    }
-    IEnumerator GameCompleted(){
-        GameManager.main.uIManager.InstantiateObjectGameOverPanel();
-        yield return new WaitForSeconds(.001f);
-        GameManager.main.uIManager.ShowGameOverPanel();
-
     }
   
 }

@@ -11,12 +11,7 @@ public class UIManager : MonoBehaviour
     
     public LeanTweenType inType;
     public LeanTweenType outType;
-
-   
      public void InstantiateObjectGameOverPanel(){
               Instantiate(gameOverPanel,GameObject.FindWithTag("Canvas").transform);
     }
-    public void ShowGameOverPanel(){
-            GameoverPanelScript script = gameOverPanel.GetComponent<GameoverPanelScript>();
-                }
 }
