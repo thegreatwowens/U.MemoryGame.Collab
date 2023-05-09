@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   itemName: Apple
-  image: {fileID: 21300000, guid: adaac68d8e5d693499597113889d11d3, type: 3}
+  image: {fileID: 21300000, guid: 61cc5ed123926434eac7f29598a7004f, type: 3}

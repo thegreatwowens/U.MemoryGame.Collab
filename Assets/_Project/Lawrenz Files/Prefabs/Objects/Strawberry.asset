@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 909d63b85e741f645b405319115bdcb0, type: 3}
-  m_Name: Clover
+  m_Name: Strawberry
   m_EditorClassIdentifier: 
-  itemName: Clover
-  image: {fileID: 21300000, guid: 7524ab7a7f453474dbfc0e05e8b92539, type: 3}
+  itemName: Strawberry
+  image: {fileID: 21300000, guid: 0c07eb1cd0c46a64bb740c20c2707d5d, type: 3}

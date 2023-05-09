@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 909d63b85e741f645b405319115bdcb0, type: 3}
-  m_Name: Meat
+  m_Name: Pineapple
   m_EditorClassIdentifier: 
-  itemName: Meat
-  image: {fileID: 21300000, guid: 3df3c7a773f95f5429f29f0c38bee4a1, type: 3}
+  itemName: Pineapple
+  image: {fileID: 21300000, guid: 94e5fbbb5c784184793bf2f837be75d9, type: 3}

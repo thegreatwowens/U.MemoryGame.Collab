@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 909d63b85e741f645b405319115bdcb0, type: 3}
-  m_Name: Crown
+  m_Name: Peach
   m_EditorClassIdentifier: 
-  itemName: Crown
-  image: {fileID: 21300000, guid: 87ffe403ed1efd9458e0e74d12890012, type: 3}
+  itemName: Fish
+  image: {fileID: 21300000, guid: 9a40987d2461f524ab11e009ef477616, type: 3}
