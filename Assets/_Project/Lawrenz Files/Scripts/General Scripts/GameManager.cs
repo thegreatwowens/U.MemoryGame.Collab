@@ -48,12 +48,15 @@ public class GameManager : MonoBehaviour
         if (main != null && main != this) 
     { 
         Destroy(this.gameObject); 
+        Application.targetFrameRate =120;
     } 
     else 
     { 
         main = this; 
         DontDestroyOnLoad(this.gameObject);
     }
+ 
+
     }
 
     public void UpdateGameState(GameState newState){
