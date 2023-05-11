@@ -1316,53 +1316,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 379447856, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_Value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 379447856, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_MaxValue
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 379447856, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_MinValue
-      value: -80
-      objectReference: {fileID: 0}
-    - target: {fileID: 379447856, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1026391322}
     - target: {fileID: 706920045, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_Value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 706920045, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_MaxValue
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 706920045, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_MinValue
-      value: -80
-      objectReference: {fileID: 0}
-    - target: {fileID: 706920045, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1026391322}
-    - target: {fileID: 720966124, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1333060481}
-    - target: {fileID: 1753396065, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_Value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1753396065, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_MaxValue
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1753396065, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_MinValue
-      value: -80
-      objectReference: {fileID: 0}
     - target: {fileID: 1753396065, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

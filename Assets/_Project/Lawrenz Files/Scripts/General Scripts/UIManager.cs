@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     GameObject gameOverPanel;
     [SerializeField]
     GameObject optionPanel;
+    public Camera canvasCamera;
     void Awake()
     {
         backFade.alpha = 0;

@@ -27,6 +27,7 @@ public class SceneChanger : MonoBehaviour
                     if(currentScene.buildIndex == 1){
                     //    SoundManager.Instance.PlayMusic("MainMenuMusic",true);
                         GameManager.main.gameController.ItemHolder = GameObject.FindWithTag("ItemsParent").transform;
+                        GameManager.main.uIManager.canvasCamera = Camera.main;
                     }
                     if(currentScene.buildIndex == 2|| currentScene.buildIndex == 3){
                        //  SoundManager.Instance.PlayMusic("PVAIMusic",true);
