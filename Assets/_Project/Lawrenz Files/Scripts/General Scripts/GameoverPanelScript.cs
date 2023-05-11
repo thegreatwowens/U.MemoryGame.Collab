@@ -6,46 +6,14 @@ using System.Collections;
 public class GameoverPanelScript : MonoBehaviour
 
 {
-    [SerializeField]
-    TextMeshProUGUI flipCount;
+   TextMeshProUGUI bestFlipUI;
+   
+   void OnEnable()
+   {
+      bestFlipUI = this.gameObject.transform.Find("No.FlippedText").GetComponent<TextMeshProUGUI>();
+    bestFlipUI.text =GameManager.main.playerData.LoadPlayerData().ToString();
+   }
 
-    private void OnEnable() {
-            
-            flipCount.text = "Flip Count: "+ GameManager.main.playerData.LoadPlayerData();
-            LeanTween.delayedCall(.2f,ShowGameOverPanel);
-    }
-    public void PlayAgain()
-    {
-             GameManager.main.UpdateGameState(GameState.Generate);
-    }
-    public void ExitGame()
-    { 
-        GameManager.main.UpdateGameState(GameState.MainMenu);
-    }
-    public void ClickedExitGame(){
 
-        HideGameOverPanel();
-    }
-     public void ShowGameOverPanel(){
-          LeanTween.scale(this.gameObject,new Vector3(1,1,1),1f).setDelay(.1f).setEase(GameManager.main.uIManager.inType);
-    }
-       public void HideGameOverPanel(){
-        StartCoroutine(HidePanel(this.gameObject));
-    }
-    
-    IEnumerator HidePanel(GameObject obj){
-          LeanTween.scale(obj,new Vector3(0,0,0),1f).setDelay(.1f).setEase(GameManager.main.uIManager.outType);
-        yield return new WaitForSeconds(1.1f);
-        ExitGame();
-        DeleteObject(obj);
-    }
-    public void DeleteObject(GameObject obj){
-
-                Destroy(obj);
-
-    }
-    public void InstantiateObject(GameObject obj){
-              Instantiate(obj,GameObject.FindWithTag("Canvas").transform);
-    }
     
 }

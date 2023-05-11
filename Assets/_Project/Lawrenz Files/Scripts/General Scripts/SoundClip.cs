@@ -1,15 +1,16 @@
 
 using UnityEngine;
-
 namespace ddr.MemoryGame.SoundClip{
- [CreateAssetMenu(fileName= "New Sound",menuName = "Memory Game/SoundClip")]
 
-public class SoundClip : ScriptableObject
-{
-    public new string name;
+[System.Serializable]
+public class SoundClip {
+     public string name;
     public AudioClip clip;
 
 }
+   
+
+
 
 }
 

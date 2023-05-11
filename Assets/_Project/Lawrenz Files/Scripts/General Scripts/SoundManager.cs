@@ -44,15 +44,13 @@ public class SoundManager : MonoBehaviour
     }
 
     public void VolumeSliderMaster (float volume){
-                bGSource.volume = volume;
-                fXSource.volume = volume;
-            
+         mixer.SetFloat("Master",volume);
     }
     public void VolumeSliderSoundFx(float volume){
-           
+                mixer.SetFloat("SoundFx",volume);
     }
     public void VolumeSliderMusic(float volume){
-
+                mixer.SetFloat("BGMusic",volume);
     }
 
 }

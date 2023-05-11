@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
         private void HandleGameOverState()
         {
-                  uIManager.InstantiateObjectGameOverPanel();
+                  uIManager.ShowGameOver();
                   gameController._items.Clear();
         }
 
