@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager {get; set;}
     public PlayerData playerData {get; set;}
     public UIManager uIManager {get; private set;}
-    void OnValidate()
+    
+    public Camera camera =null;
+
+        void OnValidate()
     {
         if( sceneChanger == null && soundManager == null && gameController == 
         null && animationController == null && scoreManager == null && playerData == null && uIManager == null ){
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
     }
     void Awake()
     {
+      
         if (main != null && main != this) 
     { 
         Destroy(this.gameObject); 
@@ -52,6 +56,8 @@ public class GameManager : MonoBehaviour
     } 
     else 
     { 
+        camera = Camera.main;
+          uIManager.canvas.worldCamera =  camera;
         main = this; 
         DontDestroyOnLoad(this.gameObject);
     }

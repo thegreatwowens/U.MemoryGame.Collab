@@ -11,13 +11,17 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject gameOverPanel;
     [SerializeField]
-    GameObject optionPanel;
-    public Camera canvasCamera;
+    GameObject optionPanelGame;
+    [SerializeField]
+    GameObject mainMenuOptionPanel;
+
+    public Canvas canvas;
     void Awake()
     {
         backFade.alpha = 0;
         backFade.interactable = false;
         backFade.blocksRaycasts = false;
+
     }
     
     public LeanTweenType inType;
@@ -26,7 +30,7 @@ public class UIManager : MonoBehaviour
 #region DisablePanelOnCompleteHover
 
             private void optionDisabled(){
-            optionPanel.SetActive(false);
+            optionPanelGame.SetActive(false);
     }
         private void GameOverDisabled()
     {  gameOverPanel.SetActive(false); }
@@ -45,8 +49,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowOption(){
-            optionPanel.SetActive(true);
-            LeanTween.scale(optionPanel,new Vector3(1,1,1),3f).setDelay(.2f).setEase(inType);
+            optionPanelGame.SetActive(true);
+            LeanTween.scale(optionPanelGame,new Vector3(1,1,1),3f).setDelay(.2f).setEase(inType);
             LeanTween.alphaCanvas(backFade,1,.2f);
             backFade.blocksRaycasts = true;
     }
@@ -54,6 +58,13 @@ public class UIManager : MonoBehaviour
             LeanTween.alphaCanvas(backFade,0,.2f).setDelay(.2f);
             LeanTween.scale(gameOverPanel,new Vector3(0,0,0),3f).setEase(outType).setOnComplete(optionDisabled);
             backFade.blocksRaycasts = false;
+    }
+    
+    public void ShowMainMenuOption(bool value){
+            CanvasGroup canvas = mainMenuOptionPanel.GetComponent<CanvasGroup>();
+            mainMenuOptionPanel.SetActive(value);
+                canvas.interactable = value;
+                canvas.blocksRaycasts = value;
     }
 
 }
