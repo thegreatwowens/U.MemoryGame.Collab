@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [Header("Items Parent")]
     [HideInInspector]
     public Transform ItemHolder;
+    public CanvasGroup canvasItems;
     [HideInInspector]
     public List<GameObject> _items = new List<GameObject>();
 
@@ -25,12 +26,14 @@ public class GameController : MonoBehaviour
     private int itemCounts;
     void Awake()
     {
-       
+        
     }
     public void Generate()
     {
+        canvasItems.interactable = false;
         generator.PopulateGrid(ItemHolder, _items);
         LeanTween.delayedCall(1f, RemoveParent);
+        LeanTween.delayedCall(3f,FlipItem);
     }
     public void RemoveParent()
     {
@@ -38,6 +41,7 @@ public class GameController : MonoBehaviour
         Destroy(layout);
     }
     public void FlipItem(){
+            canvasItems.interactable = true;
         for(int i =0; i<ItemHolder.childCount;i++){
             ItemData data = ItemHolder.transform.GetChild(i).GetComponent<ItemData>();
             data.CallFlip();

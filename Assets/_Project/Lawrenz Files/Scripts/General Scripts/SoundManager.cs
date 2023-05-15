@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     public SoundClip[] bGMusic,fXClip;
     public AudioSource bGSource,fXSource;
     public AudioMixer mixer;
+    float master,music,soundFX;
 
       public void PlayMusic(string name,bool isLooping){
          SoundClip sound =     Array.Find(bGMusic,x => x.name == name);
@@ -27,6 +28,9 @@ public class SoundManager : MonoBehaviour
             }
 
     }
+    public void StopMusic(){
+            bGSource.Stop();
+    }
     public void PlaySoundFx(string name){
         SoundClip sound =  Array.Find(fXClip,x => x.name == name);
             
@@ -43,13 +47,33 @@ public class SoundManager : MonoBehaviour
     }
 
     public void VolumeSliderMaster (float volume){
-         mixer.SetFloat("Master",volume);
+         mixer.SetFloat("Master",MathF.Log10(volume)*20);
+         master = MathF.Log10(volume)*20;
+         PlayerPrefs.SetFloat("Master",volume);
+         PlayerPrefs.Save();
+
     }
     public void VolumeSliderSoundFx(float volume){
-                mixer.SetFloat("SoundFx",volume);
+                mixer.SetFloat("SoundFx",MathF.Log10(volume)*20);
+                soundFX = MathF.Log10(volume)*20;
+                PlayerPrefs.SetFloat("SoundFx",volume);
+                PlayerPrefs.Save();
     }
     public void VolumeSliderMusic(float volume){
-                mixer.SetFloat("BGMusic",volume);
+                mixer.SetFloat("BGMusic",MathF.Log10(volume)*20);
+                music = MathF.Log10(volume)*20;
+                PlayerPrefs.SetFloat("BGMusic",volume);
+                PlayerPrefs.Save();
     }
+    public float ReturnMasterVolume(){
+        
+        return master;
+    }
+    public float ReturnSoundFx(){
 
+        return soundFX;
+    }
+    public float ReturnMusic(){
+        return music;
+    }
 }

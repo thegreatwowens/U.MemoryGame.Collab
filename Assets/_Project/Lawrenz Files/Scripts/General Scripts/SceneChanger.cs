@@ -21,16 +21,23 @@ public class SceneChanger : MonoBehaviour
             SceneManager.sceneLoaded += OnSceneLoaded;
     }
            
-
+    void Start()
+    {
+    }
         private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1){
             currentScene = SceneManager.GetActiveScene();
+                   
+                
                     if(currentScene.buildIndex == 1){
-                    //    SoundManager.Instance.PlayMusic("MainMenuMusic",true);
-                        GameManager.main.gameController.ItemHolder = GameObject.FindWithTag("ItemsParent").transform;
 
-                    }
-                    if(currentScene.buildIndex == 2|| currentScene.buildIndex == 3){
-                       //  SoundManager.Instance.PlayMusic("PVAIMusic",true);
+                        GameManager.main.soundManager.PlayMusic("GameBGMusic",true);
+                        GameManager.main.gameController.ItemHolder = GameObject.FindWithTag("ItemsParent").transform;
+                        GameManager.main.gameController.canvasItems
+                         = GameManager.main.gameController.ItemHolder.GetComponent<CanvasGroup>(); 
+                   }
+                    if(currentScene.buildIndex ==0){
+
+                       GameManager.main.soundManager.StopMusic();
                     }
                     
                     FadeFromPreviousScene();
@@ -49,6 +56,7 @@ public class SceneChanger : MonoBehaviour
 
     public void FadeFromPreviousScene(){
 
+        if(canvasGroup != null)
         LeanTween.alphaCanvas(canvasGroup,0,fadeInDuration);
 
     }

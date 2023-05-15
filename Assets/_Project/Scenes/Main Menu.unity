@@ -218,6 +218,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6524740}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6524741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,10 +476,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 720966124, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1924157109}
     - target: {fileID: 5122636396894292017, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -516,10 +524,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5122636396894292023, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1924157109}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
 --- !u!1 &754613168

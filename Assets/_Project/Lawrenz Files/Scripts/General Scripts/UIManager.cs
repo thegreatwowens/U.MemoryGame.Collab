@@ -14,7 +14,8 @@ public class UIManager : MonoBehaviour
     GameObject optionPanelGame;
     [SerializeField]
     GameObject mainMenuOptionPanel;
-
+    [SerializeField]
+    GameObject InstructionPanel;
     public Canvas canvas;
     void Awake()
     {
@@ -34,31 +35,47 @@ public class UIManager : MonoBehaviour
     }
         private void GameOverDisabled()
     {  gameOverPanel.SetActive(false); }
+        private void InstructionDisabled(){
+            InstructionPanel.SetActive(false);
+        }
 #endregion
  
     public void ShowGameOver(){
             gameOverPanel.SetActive(true);
-            LeanTween.scale(gameOverPanel,new Vector3(1,1,1),3f).setDelay(.2f).setEase(inType);
+            LeanTween.scale(gameOverPanel,new Vector3(1,1,1),.3f).setDelay(.2f).setEase(inType);
             LeanTween.alphaCanvas(backFade,1,.2f);
             backFade.blocksRaycasts = true;
     }
     public void HideGameOver(){
             LeanTween.alphaCanvas(backFade,0,.2f).setDelay(.2f);
-            LeanTween.scale(gameOverPanel,new Vector3(0,0,0),3f).setEase(outType).setOnComplete(GameOverDisabled);
+            LeanTween.scale(gameOverPanel,new Vector3(0,0,0),.3f).setEase(outType).setOnComplete(GameOverDisabled);
             backFade.blocksRaycasts = false;
     }
 
     public void ShowOption(){
             optionPanelGame.SetActive(true);
-            LeanTween.scale(optionPanelGame,new Vector3(1,1,1),3f).setDelay(.2f).setEase(inType);
+            LeanTween.scale(optionPanelGame,new Vector3(1,1,1),.3f).setDelay(.2f).setEase(inType);
             LeanTween.alphaCanvas(backFade,1,.2f);
             backFade.blocksRaycasts = true;
     }
     public void HideOption(){
             LeanTween.alphaCanvas(backFade,0,.2f).setDelay(.2f);
-            LeanTween.scale(gameOverPanel,new Vector3(0,0,0),3f).setEase(outType).setOnComplete(optionDisabled);
+            LeanTween.scale(optionPanelGame,new Vector3(0,0,0),.3f).setEase(outType).setOnComplete(optionDisabled);
             backFade.blocksRaycasts = false;
     }
+    public void ShowInstruction (){
+             InstructionPanel.SetActive(true);
+            LeanTween.scale(InstructionPanel,new Vector3(1,1,1),.3f).setDelay(.2f).setEase(inType);
+            LeanTween.alphaCanvas(backFade,1,.2f);
+            backFade.blocksRaycasts = true;
+
+    }
+    public void HideInstruction(){
+         LeanTween.alphaCanvas(backFade,0,.2f).setDelay(.2f);
+            LeanTween.scale(InstructionPanel,new Vector3(0,0,0),.3f).setEase(outType).setOnComplete(InstructionDisabled);
+            backFade.blocksRaycasts = false;
+    }
+
     
     public void ShowMainMenuOption(bool value){
             CanvasGroup canvas = mainMenuOptionPanel.GetComponent<CanvasGroup>();

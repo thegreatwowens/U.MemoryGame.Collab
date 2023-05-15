@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData {get; set;}
     public UIManager uIManager {get; private set;}
     
-    public Camera camera =null;
-
         void OnValidate()
     {
         if( sceneChanger == null && soundManager == null && gameController == 
@@ -51,13 +49,13 @@ public class GameManager : MonoBehaviour
       
         if (main != null && main != this) 
     { 
+
         Destroy(this.gameObject); 
-        Application.targetFrameRate =120;
+      
     } 
     else 
     { 
-        camera = Camera.main;
-          uIManager.canvas.worldCamera =  camera;
+              Application.targetFrameRate =120;
         main = this; 
         DontDestroyOnLoad(this.gameObject);
     }
