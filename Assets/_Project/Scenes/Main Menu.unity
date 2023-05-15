@@ -207,8 +207,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1113450845}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_TargetAssemblyTypeName: MainMenuInput, Assembly-CSharp
+        m_MethodName: StartListener
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -338,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 458058166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1113450845}
+        m_TargetAssemblyTypeName: MainMenuInput, Assembly-CSharp
+        m_MethodName: ExitListener
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &458058166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 720966124, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1924157109}
     - target: {fileID: 5122636396894292017, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -500,6 +516,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5122636396894292023, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1924157109}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62f320e70da2af47a260eab0b6523ad, type: 3}
 --- !u!1 &754613168
@@ -557,7 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -640,7 +660,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 4f8202d121524914c959f928a9ed3bbd, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -648,7 +668,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 6.22
 --- !u!222 &806831465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -960,7 +980,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1162580353}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1113450845}
+        m_TargetAssemblyTypeName: MainMenuInput, Assembly-CSharp
+        m_MethodName: OptionListener
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1162580353
 MonoBehaviour:
   m_ObjectHideFlags: 0

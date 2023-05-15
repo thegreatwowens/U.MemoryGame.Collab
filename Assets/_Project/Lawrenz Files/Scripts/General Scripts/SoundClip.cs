@@ -1,6 +1,5 @@
 
 using UnityEngine;
-namespace ddr.MemoryGame.SoundClip{
 
 [System.Serializable]
 public class SoundClip {
@@ -8,9 +7,5 @@ public class SoundClip {
     public AudioClip clip;
 
 }
-   
 
-
-
-}
 

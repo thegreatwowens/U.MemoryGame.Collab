@@ -32,6 +32,12 @@ namespace ddr.MemoryGame
          (GameManager.main.gameController.AfterMatched);
 
         }
+
+        /// MAiN MENU Animation
+        
+
+
+
     }
 
 }
