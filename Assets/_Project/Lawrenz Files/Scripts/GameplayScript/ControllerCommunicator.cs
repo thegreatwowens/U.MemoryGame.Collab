@@ -33,7 +33,9 @@ public class ControllerCommunicator : MonoBehaviour
     }
 
     void Start()
-    {   ShowInstruction();
+    {   
+        
+                LeanTween.delayedCall(.5f,ShowInstruction);
         
     }
  

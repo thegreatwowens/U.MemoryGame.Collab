@@ -6,14 +6,29 @@ using System.Collections;
 public class GameoverPanelScript : MonoBehaviour
 
 {
-   TextMeshProUGUI bestFlipUI;
+  public TextMeshProUGUI RecordedBestFlip;
+  public TextMeshProUGUI PlayerFlipCounts;
    
    void OnEnable()
    {
-      bestFlipUI = this.gameObject.transform.Find("No.FlippedText").GetComponent<TextMeshProUGUI>();
-    bestFlipUI.text =GameManager.main.playerData.LoadPlayerData().ToString();
+      PlayerFlipCounts.text = GameManager.main.gameController.flipCount.ToString();
+      RecordedBestFlip.text = GameManager.main.playerData.LoadPlayerData().ToString();
    }
 
-
+   public void PlayAgain(){
+            GameManager.main.uIManager.HideGameOver();
+            LeanTween.delayedCall(.8f,DelayPlayAgain);
+   }
+   public void ExitGame(){
+           GameManager.main.uIManager.HideGameOver();
+            LeanTween.delayedCall(.8f,DelayExitGame);
+     // 
+   }
     
+    public void DelayPlayAgain(){
+          GameManager.main.sceneChanger.FadeToNextScene(1);
+    }
+    public void DelayExitGame(){
+          GameManager.main.sceneChanger.FadeToNextScene(0);
+    }
 }

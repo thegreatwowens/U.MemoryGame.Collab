@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public ItemData firstItemGuess, secondItemGuess;
 
-    private  int flipCount;
+    public  int flipCount;
     private int itemCounts;
     void Awake()
     {
@@ -99,7 +99,6 @@ public class GameController : MonoBehaviour
         {
             flipCount++;
             NotMatched();
-            GameManager.main.scoreManager.SetNewFlipRecord(flipCount);
             //sounds
         }
 

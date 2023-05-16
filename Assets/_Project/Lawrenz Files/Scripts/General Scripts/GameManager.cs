@@ -93,6 +93,12 @@ public class GameManager : MonoBehaviour
         {
                   uIManager.ShowGameOver();
                   gameController._items.Clear();
+                if(GameManager.main.gameController.flipCount<= GameManager.main.playerData.LoadPlayerData()){
+                    GameManager.main.scoreManager.SetNewFlipRecord(GameManager.main.gameController.flipCount);
+                }
+                else{
+                        PlayerPrefs.Save();
+                }
         }
 
         private void HandleGameStartState()
