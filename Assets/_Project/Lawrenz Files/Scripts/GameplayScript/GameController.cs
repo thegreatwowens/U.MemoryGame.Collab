@@ -30,8 +30,11 @@ public class GameController : MonoBehaviour
     }
     public void Generate()
     {
+          GameManager.main.soundManager.PlaySoundFx("UIClicks");
         canvasItems.interactable = false;
+        canvasItems.blocksRaycasts = false;
         generator.PopulateGrid(ItemHolder, _items);
+
         LeanTween.delayedCall(1f, RemoveParent);
         LeanTween.delayedCall(3f,FlipItem);
     }
@@ -42,6 +45,7 @@ public class GameController : MonoBehaviour
     }
     public void FlipItem(){
             canvasItems.interactable = true;
+            canvasItems.blocksRaycasts = true;
         for(int i =0; i<ItemHolder.childCount;i++){
             ItemData data = ItemHolder.transform.GetChild(i).GetComponent<ItemData>();
             data.CallFlip();
@@ -94,10 +98,12 @@ public class GameController : MonoBehaviour
         if (firstItemGuess.item == secondItemGuess.item)
         {
             GameManager.main.animationController.MatchedAnimation();
+            GameManager.main.soundManager.PlaySoundFx("Matched");
         }
         else
         {
             flipCount++;
+            GameManager.main.soundManager.PlaySoundFx("NotMatched");
             NotMatched();
             //sounds
         }
@@ -107,6 +113,7 @@ public class GameController : MonoBehaviour
     private void CheckCompletedGame(){
         if(ItemHolder.childCount == 0){
              GameManager.main.UpdateGameState(GameState.GameOver);
+            generator.OnNewGame();
         }
         return;
     }
@@ -121,6 +128,10 @@ public class GameController : MonoBehaviour
         Destroy(secondItemGuess.gameObject);
         LeanTween.delayedCall(.5f,CheckCompletedGame);
         ResetGuesses();
+    }
+    public void ClearDatas(){
+      _items.Clear();
+      generator.OnNewGame();
     }
   
 }

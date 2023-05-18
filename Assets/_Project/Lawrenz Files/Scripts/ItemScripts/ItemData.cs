@@ -45,6 +45,7 @@ public class ItemData : MonoBehaviour
     }
     public void Interacted()
     {
+          GameManager.main.soundManager.PlaySoundFx("Selected");
         interacted = true;
         CallFlip();
         gameObject.transform.SetSiblingIndex(GameManager.main.gameController._items.Count);

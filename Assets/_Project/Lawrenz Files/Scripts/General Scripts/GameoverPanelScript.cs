@@ -16,16 +16,19 @@ public class GameoverPanelScript : MonoBehaviour
    }
 
    public void PlayAgain(){
+            GameManager.main.gameController.ClearDatas();  
             GameManager.main.uIManager.HideGameOver();
             LeanTween.delayedCall(.8f,DelayPlayAgain);
    }
    public void ExitGame(){
            GameManager.main.uIManager.HideGameOver();
+            GameManager.main.gameController.ClearDatas();
             LeanTween.delayedCall(.8f,DelayExitGame);
      // 
    }
     
     public void DelayPlayAgain(){
+      
           GameManager.main.sceneChanger.FadeToNextScene(1);
     }
     public void DelayExitGame(){

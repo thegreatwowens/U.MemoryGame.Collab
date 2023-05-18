@@ -37,7 +37,7 @@ public class SceneChanger : MonoBehaviour
                    }
                     if(currentScene.buildIndex ==0){
 
-                       GameManager.main.soundManager.StopMusic();
+                    //   GameManager.main.soundManager.StopMusic();
                     }
                     
                     FadeFromPreviousScene();

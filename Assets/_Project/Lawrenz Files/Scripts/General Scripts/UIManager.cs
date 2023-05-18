@@ -71,6 +71,7 @@ public class UIManager : MonoBehaviour
 
     }
     public void HideInstruction(){
+              
          LeanTween.alphaCanvas(backFade,0,.2f).setDelay(.2f);
             LeanTween.scale(InstructionPanel,new Vector3(0,0,0),.3f).setEase(outType).setOnComplete(InstructionDisabled);
             backFade.blocksRaycasts = false;

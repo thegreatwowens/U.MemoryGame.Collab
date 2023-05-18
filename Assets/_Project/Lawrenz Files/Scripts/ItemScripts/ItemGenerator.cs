@@ -36,6 +36,9 @@ public class ItemGenerator : MonoBehaviour
             Instantiate(item, parent);
         }
     }
+        public void OnNewGame(){
+                randomInts.Clear();
+        }
 }
 
 }

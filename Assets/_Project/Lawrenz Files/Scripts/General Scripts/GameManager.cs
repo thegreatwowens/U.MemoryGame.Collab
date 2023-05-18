@@ -31,13 +31,7 @@ public class GameManager : MonoBehaviour
     {
         if( sceneChanger == null && soundManager == null && gameController == 
         null && animationController == null && scoreManager == null && playerData == null && uIManager == null ){
-        sceneChanger = GetComponentInChildren<SceneChanger>();
-        soundManager = GetComponentInChildren<SoundManager>();
-        gameController = GetComponentInChildren<GameController>();
-        animationController =GetComponentInChildren<AnimationController>();
-        playerData = GetComponentInChildren<PlayerData>();
-        scoreManager = GetComponentInChildren<ScoreManager>();
-        uIManager = GetComponentInChildren<UIManager>();
+        
         print ("Missing Dependencies. Adding.... Completed");
         }else{
             print("Dependencies are Completed");
@@ -46,6 +40,13 @@ public class GameManager : MonoBehaviour
     }
     void Awake()
     {
+        sceneChanger = GetComponentInChildren<SceneChanger>();
+        soundManager = GetComponentInChildren<SoundManager>();
+        gameController = GetComponentInChildren<GameController>();
+        animationController =GetComponentInChildren<AnimationController>();
+        playerData = GetComponentInChildren<PlayerData>();
+        scoreManager = GetComponentInChildren<ScoreManager>();
+        uIManager = GetComponentInChildren<UIManager>();
       
         if (main != null && main != this) 
     { 
@@ -63,6 +64,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if(!hasFocus){
+            uIManager.ShowOption();
+        }
+    }
     public void UpdateGameState(GameState newState){
             switch(newState){
                 case GameState.MainMenu:
@@ -90,15 +97,19 @@ public class GameManager : MonoBehaviour
         }
 
         private void HandleGameOverState()
-        {
-                  uIManager.ShowGameOver();
-                  gameController._items.Clear();
+        {   
                 if(GameManager.main.gameController.flipCount<= GameManager.main.playerData.LoadPlayerData()){
                     GameManager.main.scoreManager.SetNewFlipRecord(GameManager.main.gameController.flipCount);
+                    PlayerPrefs.Save();
                 }
-                else{
-                        PlayerPrefs.Save();
+                else if(GameManager.main.playerData.LoadPlayerData() <= 0){
+                            
+                             GameManager.main.scoreManager.SetNewFlipRecord(GameManager.main.gameController.flipCount);
+                            PlayerPrefs.Save();
+                }else {
+                    PlayerPrefs.Save();
                 }
+                uIManager.ShowGameOver();
         }
 
         private void HandleGameStartState()

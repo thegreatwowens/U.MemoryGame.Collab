@@ -38,6 +38,9 @@ public class ControllerCommunicator : MonoBehaviour
                 LeanTween.delayedCall(.5f,ShowInstruction);
         
     }
+    public void DebugFLip(){
+            GameManager.main.gameController.FlipItem();
+    }
  
 
 

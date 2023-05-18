@@ -49,21 +49,14 @@ public class SoundManager : MonoBehaviour
     public void VolumeSliderMaster (float volume){
          mixer.SetFloat("Master",MathF.Log10(volume)*20);
          master = MathF.Log10(volume)*20;
-         PlayerPrefs.SetFloat("Master",volume);
-         PlayerPrefs.Save();
-
     }
     public void VolumeSliderSoundFx(float volume){
                 mixer.SetFloat("SoundFx",MathF.Log10(volume)*20);
                 soundFX = MathF.Log10(volume)*20;
-                PlayerPrefs.SetFloat("SoundFx",volume);
-                PlayerPrefs.Save();
     }
     public void VolumeSliderMusic(float volume){
                 mixer.SetFloat("BGMusic",MathF.Log10(volume)*20);
                 music = MathF.Log10(volume)*20;
-                PlayerPrefs.SetFloat("BGMusic",volume);
-                PlayerPrefs.Save();
     }
     public float ReturnMasterVolume(){
         
